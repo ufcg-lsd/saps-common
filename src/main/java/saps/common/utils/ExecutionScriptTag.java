@@ -10,12 +10,17 @@ public class ExecutionScriptTag {
 	private String name;
 	private String dockerRepository;
 	private String dockerTag;
+	private String memoryUsage;
+	private String cpuUsage;
 
-	public ExecutionScriptTag(String name, String dockerRepository, String dockerTag, String type) {
+	public ExecutionScriptTag(String name, String dockerRepository, String dockerTag, String memoryUsage,
+			String cpuUsage, String type) {
 		this.name = name;
 		this.dockerRepository = dockerRepository;
 		this.dockerTag = dockerTag;
 		this.type = type;
+		this.memoryUsage = memoryUsage;
+		this.cpuUsage = cpuUsage;
 	}
 
 	public String getName() {
@@ -34,16 +39,24 @@ public class ExecutionScriptTag {
 		return dockerTag;
 	}
 
+	public String getMemoryUsage() {
+		return memoryUsage;
+	}
+
+	public String getCpuUsage() {
+		return cpuUsage;
+	}
+
 	public String formatImageDocker() {
 		return dockerRepository + ":" + dockerTag;
 	}
 
 	@Override
 	public String toString() {
-		return "ScriptTag [type=" + type + ", name=" + name + ", dockerRepository="
-				+ dockerRepository + ", dockerTag=" + dockerTag + "]";
+		return "ScriptTag [type=" + type + ", name=" + name + ", dockerRepository=" + dockerRepository + ", dockerTag="
+				+ dockerTag + ", memoryUsage=" + memoryUsage + ", cpuUsage=" + cpuUsage + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -51,7 +64,8 @@ public class ExecutionScriptTag {
 		result = prime * result + ((dockerRepository == null) ? 0 : dockerRepository.hashCode());
 		result = prime * result + ((dockerTag == null) ? 0 : dockerTag.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + ((memoryUsage == null) ? 0 : memoryUsage.hashCode());
+		result = prime * result + ((cpuUsage == null) ? 0 : cpuUsage.hashCode());
 		return result;
 	}
 
@@ -83,6 +97,16 @@ public class ExecutionScriptTag {
 			if (other.type != null)
 				return false;
 		} else if (!type.equals(other.type))
+			return false;
+		if (memoryUsage == null) {
+			if (other.memoryUsage != null)
+				return false;
+		} else if (!memoryUsage.equals(other.memoryUsage))
+			return false;
+		if (cpuUsage == null) {
+			if (other.cpuUsage != null)
+				return false;
+		} else if (!cpuUsage.equals(other.cpuUsage))
 			return false;
 		return true;
 	}
