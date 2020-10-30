@@ -33,6 +33,11 @@ public class ExecutionScriptTagUtil {
 		return executionScriptTag;
 	}
 
+	protected static void checkRequirement(String requirement, String regex) throws SapsException {
+		if(!requirement.matches(regex))
+			throw new SapsException(requirement + "does not contain expected format [" + regex + "]");
+	}
+
 	protected static ExecutionScriptTag findExecutionScriptTag(String name, String type, JSONObject jsonExecScriptTagFile) throws SapsException {
 		try {
 			JSONArray jArrayScriptTags = jsonExecScriptTagFile.optJSONArray(type);
