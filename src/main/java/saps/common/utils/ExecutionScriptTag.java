@@ -1,26 +1,39 @@
 package saps.common.utils;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import saps.common.exceptions.SapsException;
+
 public class ExecutionScriptTag {
 
 	public static String INPUT_DOWNLOADER = "inputdownloading";
 	public static String PROCESSING = "processing";
 	public static String PRE_PROCESSING = "preprocessing";
 
+	public static String MEMORY_REQUIREMENT = "memory";
+	public static String REGEXP_MEMORY_REQUIREMENT = "^[0-9]+[EPTGMK]$";
+
+	public static String CPU_REQUIREMENT = "cpu";
+	public static String REGEXP_CPU_REQUIREMENT = "^[0-9]+m$";
+
 	private String type;
 	private String name;
 	private String dockerRepository;
 	private String dockerTag;
-	private String memoryUsage;
-	private String cpuUsage;
+	private Map<String, String> requirements;
 
 	public ExecutionScriptTag(String name, String dockerRepository, String dockerTag, String memoryUsage,
-			String cpuUsage, String type) {
+			String cpuUsage, String type) throws SapsException {
 		this.name = name;
 		this.dockerRepository = dockerRepository;
 		this.dockerTag = dockerTag;
 		this.type = type;
-		this.memoryUsage = memoryUsage;
-		this.cpuUsage = cpuUsage;
+		this.requirements = new HashMap<String, String>();
+		this.requirements.put(MEMORY_REQUIREMENT, memoryUsage);
+		this.requirements.put(CPU_REQUIREMENT, cpuUsage);
+		ExecutionScriptTagUtil.checkRequirement(memoryUsage, REGEXP_MEMORY_REQUIREMENT);
+		ExecutionScriptTagUtil.checkRequirement(cpuUsage, REGEXP_CPU_REQUIREMENT);
 	}
 
 	public String getName() {
@@ -40,11 +53,11 @@ public class ExecutionScriptTag {
 	}
 
 	public String getMemoryUsage() {
-		return memoryUsage;
+		return requirements.get(MEMORY_REQUIREMENT);
 	}
 
 	public String getCpuUsage() {
-		return cpuUsage;
+		return requirements.get(CPU_REQUIREMENT);
 	}
 
 	public String formatImageDocker() {
@@ -54,7 +67,7 @@ public class ExecutionScriptTag {
 	@Override
 	public String toString() {
 		return "ScriptTag [type=" + type + ", name=" + name + ", dockerRepository=" + dockerRepository + ", dockerTag="
-				+ dockerTag + ", memoryUsage=" + memoryUsage + ", cpuUsage=" + cpuUsage + "]";
+				+ dockerTag + ", memoryUsage=" + getMemoryUsage() + ", cpuUsage=" + getCpuUsage() + "]";
 	}
 
 	@Override
@@ -64,8 +77,8 @@ public class ExecutionScriptTag {
 		result = prime * result + ((dockerRepository == null) ? 0 : dockerRepository.hashCode());
 		result = prime * result + ((dockerTag == null) ? 0 : dockerTag.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((memoryUsage == null) ? 0 : memoryUsage.hashCode());
-		result = prime * result + ((cpuUsage == null) ? 0 : cpuUsage.hashCode());
+		result = prime * result + ((getMemoryUsage() == null) ? 0 : getMemoryUsage().hashCode());
+		result = prime * result + ((getCpuUsage() == null) ? 0 : getCpuUsage().hashCode());
 		return result;
 	}
 
@@ -98,15 +111,15 @@ public class ExecutionScriptTag {
 				return false;
 		} else if (!type.equals(other.type))
 			return false;
-		if (memoryUsage == null) {
-			if (other.memoryUsage != null)
+		if (getMemoryUsage() == null) {
+			if (other.getMemoryUsage() != null)
 				return false;
-		} else if (!memoryUsage.equals(other.memoryUsage))
+		} else if (!getMemoryUsage().equals(other.getMemoryUsage()))
 			return false;
-		if (cpuUsage == null) {
-			if (other.cpuUsage != null)
+		if (getCpuUsage() == null) {
+			if (other.getCpuUsage() != null)
 				return false;
-		} else if (!cpuUsage.equals(other.cpuUsage))
+		} else if (!getCpuUsage().equals(other.getCpuUsage()))
 			return false;
 		return true;
 	}
