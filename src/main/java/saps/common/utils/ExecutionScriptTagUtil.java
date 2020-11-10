@@ -22,6 +22,8 @@ public class ExecutionScriptTagUtil {
 	private static final String NAME_KEY_JSON = "name";
 	private static final String DOCKER_TAG_KEY_JSON = "docker_tag";
 	private static final String DOCKER_REPOSITORY_KEY_JSON = "docker_repository";
+	private static final String MEMORY_USAGE_KEY_JSON = "memory_usage";
+	private static final String CPU_USAGE_KEY_JSON = "cpu_usage";
 
 	public static ExecutionScriptTag getExecutionScriptTag(String tagsFilePath, String name, String type) throws Exception {
 		LOGGER.info("Getting Execution Script Tag [" + tagsFilePath + "] by name [" + name + "] and type [" + type + "]");
@@ -29,6 +31,11 @@ public class ExecutionScriptTagUtil {
 		ExecutionScriptTag executionScriptTag = findExecutionScriptTag(name, type, jsonScriptTagFile);
 		LOGGER.debug("Execution Script Tag Found: " + executionScriptTag.toString());
 		return executionScriptTag;
+	}
+
+	protected static void checkRequirement(String requirement, String regex) throws SapsException {
+		if(!requirement.matches(regex))
+			throw new SapsException(requirement + "does not contain expected format [" + regex + "]");
 	}
 
 	protected static ExecutionScriptTag findExecutionScriptTag(String name, String type, JSONObject jsonExecScriptTagFile) throws SapsException {
@@ -44,8 +51,10 @@ public class ExecutionScriptTagUtil {
 				if (scriptTagName != null && scriptTagName.equals(name)) {
 					String dockerTag = jsonScriptTag.optString(DOCKER_TAG_KEY_JSON);
 					String dockerRepository = jsonScriptTag.optString(DOCKER_REPOSITORY_KEY_JSON);
+					String memoryUsage = jsonScriptTag.optString(MEMORY_USAGE_KEY_JSON);
+					String cpuUsage = jsonScriptTag.optString(CPU_USAGE_KEY_JSON);
 
-					return new ExecutionScriptTag(name, dockerRepository, dockerTag, type);
+					return new ExecutionScriptTag(name, dockerRepository, dockerTag, memoryUsage, cpuUsage, type);
 				}
 			}
 			throw new Exception("Execution Script Tag by name (" + name + ") not found.");
