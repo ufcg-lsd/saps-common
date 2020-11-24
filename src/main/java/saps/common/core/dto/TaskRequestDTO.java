@@ -1,3 +1,4 @@
+/* (C)2020 */
 package saps.common.core.dto;
 
 import java.io.Serializable;
@@ -5,43 +6,50 @@ import java.util.List;
 import java.util.Map;
 
 public class TaskRequestDTO implements Serializable {
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
-    
-    private String label;
-    private Map<String, String> requirements;
-    private List<String> commands;
-    private Map<String, String> metadata;
+  /** */
+  private static final long serialVersionUID = 1L;
 
-    public TaskRequestDTO(String label, Map<String, String> requirements, List<String> commands,
-                          Map<String, String> metadata) {
-        this.label = label;
-        this.requirements = requirements;
-        this.commands = commands;
-        this.metadata = metadata;
-    }
+  private String label;
+  private Map<String, String> requirements;
+  private List<String> commands;
+  private Map<String, String> metadata;
 
-    // empty constructor required for Gson.
-    public TaskRequestDTO() {}
+  public TaskRequestDTO(
+      String label,
+      Map<String, String> requirements,
+      List<String> commands,
+      Map<String, String> metadata) {
+    this.label = label;
+    this.requirements = requirements;
+    this.commands = commands;
+    this.metadata = metadata;
+  }
 
-    public List<String> getCommands() {
-        return this.commands;
-    }
+  // empty constructor required for Gson.
+  public TaskRequestDTO() {}
 
-    public Map<String, String> getRequirements() {
-		return requirements;
-	}
+  public List<String> getCommands() {
+    return this.commands;
+  }
 
-	public Map<String, String> getMetadata() {
-        return this.metadata;
-    }
+  public Map<String, String> getRequirements() {
+    return requirements;
+  }
 
-    @Override
-    public String toString() {
-        return "TaskRequestDTO [id=" + label + ", requirements=" + requirements+ ", commands=" + commands + ", metadata="
-                + metadata + "]";
-    }
+  public Map<String, String> getMetadata() {
+    return this.metadata;
+  }
 
+  @Override
+  public String toString() {
+    return "TaskRequestDTO [id="
+        + label
+        + ", requirements="
+        + requirements
+        + ", commands="
+        + commands
+        + ", metadata="
+        + metadata
+        + "]";
+  }
 }

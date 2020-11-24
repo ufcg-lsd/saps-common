@@ -1,16 +1,17 @@
+/* (C)2020 */
 package saps.common.core.storage;
 
 public enum PermanentStorageType {
-    NFS("nfs"),
-    SWIFT("swift");
+  NFS("nfs"),
+  SWIFT("swift");
 
-    private final String type;
+  private final String type;
 
-    PermanentStorageType(String type) {
-        this.type = type;
-    }
+  PermanentStorageType(String type) {
+    this.type = type;
+  }
 
-    public String getType() {
-        return type;
-    }
+  public String getType() {
+    return type;
+  }
 }

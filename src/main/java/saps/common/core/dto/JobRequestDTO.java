@@ -1,56 +1,55 @@
+/* (C)2020 */
 package saps.common.core.dto;
 
-import saps.common.core.model.SapsJob;
-import saps.common.core.model.SapsTask;
-
 import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import saps.common.core.model.SapsJob;
+import saps.common.core.model.SapsTask;
 
 public class JobRequestDTO implements Serializable {
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
-    private String label;
-    
-    @SerializedName("tasks_specs")
-    private List<TaskRequestDTO> tasksSpecs;
+  /** */
+  private static final long serialVersionUID = 1L;
 
-    public JobRequestDTO(SapsJob job) {
-        this.tasksSpecs = new ArrayList<TaskRequestDTO>();
-        this.label = job.getName();
-        populateTaskSpec(job);
-    }
+  private String label;
 
-    private void populateTaskSpec(SapsJob job) {
-        List<SapsTask> taskList = job.getTasksList();
-        for (SapsTask task : taskList) {
-            this.tasksSpecs.add(new TaskRequestDTO(task.getId(), task.getRequirements(),
-                    task.getCommands(), task.getMetadata()));
-        }
-    }
+  @SerializedName("tasks_specs")
+  private List<TaskRequestDTO> tasksSpecs;
 
-    public String getLabel() {
-        return label;
-    }
+  public JobRequestDTO(SapsJob job) {
+    this.tasksSpecs = new ArrayList<TaskRequestDTO>();
+    this.label = job.getName();
+    populateTaskSpec(job);
+  }
 
-    public void setLabel(String label) {
-        this.label = label;
+  private void populateTaskSpec(SapsJob job) {
+    List<SapsTask> taskList = job.getTasksList();
+    for (SapsTask task : taskList) {
+      this.tasksSpecs.add(
+          new TaskRequestDTO(
+              task.getId(), task.getRequirements(), task.getCommands(), task.getMetadata()));
     }
+  }
 
-    public List<TaskRequestDTO> getTasksSpecs() {
-        return tasksSpecs;
-    }
+  public String getLabel() {
+    return label;
+  }
 
-    public void setTasksSpecs(List<TaskRequestDTO> tasksSpecs) {
-        this.tasksSpecs = tasksSpecs;
-    }
+  public void setLabel(String label) {
+    this.label = label;
+  }
 
-    @Override
-    public String toString() {
-        return "JobRequestDTO [label=" + label + ", tasksSpec=" + tasksSpecs + "]";
-    }
+  public List<TaskRequestDTO> getTasksSpecs() {
+    return tasksSpecs;
+  }
+
+  public void setTasksSpecs(List<TaskRequestDTO> tasksSpecs) {
+    this.tasksSpecs = tasksSpecs;
+  }
+
+  @Override
+  public String toString() {
+    return "JobRequestDTO [label=" + label + ", tasksSpec=" + tasksSpecs + "]";
+  }
 }
