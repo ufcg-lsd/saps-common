@@ -1,58 +1,65 @@
+/* (C)2020 */
 package saps.common.core.dto;
 
+import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-import com.google.gson.annotations.SerializedName;
-
 public class JobResponseDTO implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private String id;
-    private String label;
-    
-    @SerializedName("job_state")
-    private String jobState;
-    private List<TaskResponseDTO> tasks;
+  /** */
+  private static final long serialVersionUID = 1L;
 
-    public String getId() {
-        return id;
-    }
+  private String id;
+  private String label;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  @SerializedName("job_state")
+  private String jobState;
 
-    public String getLabel() {
-        return label;
-    }
+  private List<TaskResponseDTO> tasks;
 
-    public void setLabel(String label) {
-        this.label = label;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public String getJobState() {
-        return jobState;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public void setJobState(String jobState) {
-        this.jobState = jobState;
-    }
+  public String getLabel() {
+    return label;
+  }
 
-    public List<TaskResponseDTO> getTasks() {
-        return tasks;
-    }
+  public void setLabel(String label) {
+    this.label = label;
+  }
 
-    public void setTasks(List<TaskResponseDTO> tasks) {
-        this.tasks = tasks;
-    }
+  public String getJobState() {
+    return jobState;
+  }
 
-    @Override
-    public String toString() {
-        return "JobResponseDTO [id=" + id + ", label=" + label + ", jobState=" + jobState + ", tasks="
-                + tasks + "]";
-    }
+  public void setJobState(String jobState) {
+    this.jobState = jobState;
+  }
+
+  public List<TaskResponseDTO> getTasks() {
+    return tasks;
+  }
+
+  public void setTasks(List<TaskResponseDTO> tasks) {
+    this.tasks = tasks;
+  }
+
+  @Override
+  public String toString() {
+    return "JobResponseDTO [id="
+        + id
+        + ", label="
+        + label
+        + ", jobState="
+        + jobState
+        + ", tasks="
+        + tasks
+        + "]";
+  }
 }
