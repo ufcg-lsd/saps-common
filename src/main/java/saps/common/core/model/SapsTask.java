@@ -2,6 +2,7 @@
 package saps.common.core.model;
 
 import java.io.File;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SapsTask {
+public class SapsTask implements Serializable {
 
   private static final Logger LOGGER = Logger.getLogger(SapsTask.class);
 

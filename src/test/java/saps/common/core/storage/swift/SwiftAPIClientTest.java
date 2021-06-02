@@ -16,9 +16,10 @@ public class SwiftAPIClientTest {
 
   private Properties loadConfigFile(String path) throws IOException {
     Properties properties = new Properties();
-    FileInputStream input = new FileInputStream(path);
-    properties.load(input);
-    return properties;
+    try (FileInputStream input = new FileInputStream(path)) {
+      properties.load(input);
+      return properties;
+    }
   }
 
   @Test

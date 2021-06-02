@@ -188,30 +188,34 @@ public class SwiftPermanentStorageTest {
 
   private Properties createDefaultPropertiesWithoutArchiverInDebugMode() throws IOException {
     Properties properties = new Properties();
-    FileInputStream input = new FileInputStream(ArchiverConfigFilePath.Success.NORMAL_MODE);
-    properties.load(input);
-    return properties;
+    try (FileInputStream input = new FileInputStream(ArchiverConfigFilePath.Success.NORMAL_MODE)) {
+      properties.load(input);
+      return properties;
+    }
   }
 
   private Properties createFailurePropertiesWithoutArchiverInDebugMode() throws IOException {
     Properties properties = new Properties();
-    FileInputStream input = new FileInputStream(ArchiverConfigFilePath.Fail.NORMAL_MODE);
-    properties.load(input);
-    return properties;
+    try (FileInputStream input = new FileInputStream(ArchiverConfigFilePath.Fail.NORMAL_MODE)) {
+      properties.load(input);
+      return properties;
+    }
   }
 
   private Properties createDefaultPropertiesWithArchiverInDebugMode() throws IOException {
     Properties properties = new Properties();
-    FileInputStream input = new FileInputStream(ArchiverConfigFilePath.Success.DEBUG_MODE);
-    properties.load(input);
-    return properties;
+    try (FileInputStream input = new FileInputStream(ArchiverConfigFilePath.Success.DEBUG_MODE)) {
+      properties.load(input);
+      return properties;
+    }
   }
 
   private Properties createFailurePropertiesWithArchiverInDebugMode() throws IOException {
     Properties properties = new Properties();
-    FileInputStream input = new FileInputStream(ArchiverConfigFilePath.Fail.DEBUG_MODE);
-    properties.load(input);
-    return properties;
+    try (FileInputStream input = new FileInputStream(ArchiverConfigFilePath.Fail.DEBUG_MODE)) {
+      properties.load(input);
+      return properties;
+    }
   }
 
   @Test(expected = InvalidPropertyException.class)

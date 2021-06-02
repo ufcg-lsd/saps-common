@@ -9,28 +9,30 @@ import java.io.InputStreamReader;
 public class ProcessUtil {
 
   public static String getOutput(Process p) throws IOException {
-    BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
-    String out = new String();
-    while (true) {
-      String line = r.readLine();
-      if (line == null) {
-        break;
+    try (BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()))) {
+      StringBuilder out = new StringBuilder();
+      while (true) {
+        String line = r.readLine();
+        if (line == null) {
+          break;
+        }
+        out.append(line);
       }
-      out += line;
+      return out.toString();
     }
-    return out;
   }
 
   public static String getError(Process p) throws IOException {
-    BufferedReader r = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-    String error = new String();
-    while (true) {
-      String line = r.readLine();
-      if (line == null) {
-        break;
+    try (BufferedReader r = new BufferedReader(new InputStreamReader(p.getErrorStream()))) {
+      StringBuilder error = new StringBuilder();
+      while (true) {
+        String line = r.readLine();
+        if (line == null) {
+          break;
+        }
+        error.append(line);
       }
-      error += line;
+      return error.toString();
     }
-    return error;
   }
 }

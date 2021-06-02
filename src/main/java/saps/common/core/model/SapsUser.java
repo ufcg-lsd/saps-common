@@ -1,6 +1,8 @@
 /* (C)2020 */
 package saps.common.core.model;
 
+import java.util.Objects;
+
 public class SapsUser {
 
   private String userEmail;
@@ -73,7 +75,7 @@ public class SapsUser {
 
   @Override
   public boolean equals(Object o) {
-    if (o instanceof SapsImage) {
+    if (o instanceof SapsUser) {
       SapsUser other = (SapsUser) o;
       return getUserEmail().equals(other.getUserEmail())
           && getUserName().equals(other.getUserName())
@@ -83,5 +85,16 @@ public class SapsUser {
           && getAdminRole() == other.getAdminRole();
     }
     return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(
+        getUserEmail(),
+        getUserName(),
+        getUserPassword(),
+        isEnable(),
+        getUserNotify(),
+        getAdminRole());
   }
 }
