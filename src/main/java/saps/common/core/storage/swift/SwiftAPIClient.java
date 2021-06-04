@@ -171,8 +171,13 @@ public class SwiftAPIClient {
       throws IOException {
     List<String> files = this.listFiles(containerName, basePath);
     for (String filePath : files) {
-      if (Paths.get(filePath).getFileName().toString().equals(taskId)) {
-        return true;
+      try {
+        if (Paths.get(filePath).getFileName().toString().equals(taskId)) {
+          return true;
+        }
+      } catch (NullPointerException np) {
+        LOGGER.error("Error while checking if task exists", np);
+        return false;
       }
     }
     return false;

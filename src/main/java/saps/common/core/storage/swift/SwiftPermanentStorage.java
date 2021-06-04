@@ -238,12 +238,17 @@ public class SwiftPermanentStorage implements PermanentStorage {
    * @return boolean representation, success (true) or failure (false) to archive
    */
   private boolean uploadFiles(File localDir, String swiftDir) {
-    for (File actualFile : localDir.listFiles()) {
-      if (!uploadFile(actualFile, swiftDir)) {
-        LOGGER.info("Failure in archiving file [" + actualFile.getAbsolutePath() + "]");
-        // TODO What should really be done when one or more files fail to upload?
-        return false;
+    try {
+      for (File actualFile : localDir.listFiles()) {
+        if (!uploadFile(actualFile, swiftDir)) {
+          LOGGER.info("Failure in archiving file [" + actualFile.getAbsolutePath() + "]");
+          // TODO What should really be done when one or more files fail to upload?
+          return false;
+        }
       }
+    } catch (NullPointerException np) {
+      LOGGER.error("Error while uploading files", np);
+      return false;
     }
 
     LOGGER.info("Upload to swift successfully done");
@@ -364,6 +369,8 @@ public class SwiftPermanentStorage implements PermanentStorage {
       }
     } catch (NoSuchAlgorithmException | InvalidKeyException e) {
       throw new RuntimeException("Error while run hmac algorithm: " + e.getMessage());
+    } catch (NullPointerException np) {
+      LOGGER.error("Error while generate links", np);
     }
 
     return filesLinks;

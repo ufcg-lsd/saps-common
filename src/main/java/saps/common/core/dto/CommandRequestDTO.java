@@ -49,10 +49,6 @@ public class CommandRequestDTO implements Serializable {
     return this.state;
   }
 
-  public CommandRequestDTO clone() {
-    return null;
-  }
-
   public JSONObject toJSON() {
     try {
       JSONObject command = new JSONObject();

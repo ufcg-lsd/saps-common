@@ -55,6 +55,9 @@ public class CheckSumMD5ForFile {
     } catch (IOException e) {
       LOGGER.error("Error while creating checksum for file", e);
       return true;
+    } catch (NullPointerException np) {
+      LOGGER.error("Error while creating checksum for file", np);
+      return true;
     }
 
     LOGGER.info("Files are not corrupted...Proceeding with the execution");
