@@ -18,17 +18,20 @@ public class KeystoneV3IdentityPluginTest {
   @Ignore
   public void createToken() throws Exception {
     Properties properties = new Properties();
-    FileInputStream input = new FileInputStream(CONFIG_FILE_PATH);
-    properties.load(input);
 
-    String url = properties.getProperty(SapsPropertiesConstants.Openstack.IdentityService.API_URL);
-    String projectId = properties.getProperty(SapsPropertiesConstants.Openstack.PROJECT_ID);
-    String userId = properties.getProperty(SapsPropertiesConstants.Openstack.USER_ID);
-    String password = properties.getProperty(SapsPropertiesConstants.Openstack.USER_PASSWORD);
+    try (FileInputStream input = new FileInputStream(CONFIG_FILE_PATH)) {
+      properties.load(input);
 
-    IdentityToken token =
-        KeystoneV3IdentityRequestHelper.createIdentityToken(url, projectId, userId, password);
-    assertToken(token);
+      String url =
+          properties.getProperty(SapsPropertiesConstants.Openstack.IdentityService.API_URL);
+      String projectId = properties.getProperty(SapsPropertiesConstants.Openstack.PROJECT_ID);
+      String userId = properties.getProperty(SapsPropertiesConstants.Openstack.USER_ID);
+      String password = properties.getProperty(SapsPropertiesConstants.Openstack.USER_PASSWORD);
+
+      IdentityToken token =
+          KeystoneV3IdentityRequestHelper.createIdentityToken(url, projectId, userId, password);
+      assertToken(token);
+    }
   }
 
   private void assertToken(IdentityToken token) {

@@ -39,4 +39,9 @@ public class AccessLink {
     AccessLink that = (AccessLink) o;
     return Objects.equals(name, that.name) && Objects.equals(url, that.url);
   }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, url);
+  }
 }

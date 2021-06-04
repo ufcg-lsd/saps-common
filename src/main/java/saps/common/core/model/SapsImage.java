@@ -3,8 +3,9 @@ package saps.common.core.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import org.json.JSONException;
@@ -14,7 +15,7 @@ import saps.common.core.model.enums.ImageTaskState;
 public class SapsImage implements Serializable {
 
   private static final long serialVersionUID = 1L;
-  private static final DateFormat DATE_FORMATER = new SimpleDateFormat("yyyy-MM-dd");
+  private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
   public static final String NONE_FEDERATION_MEMBER = "None";
   public static final String NONE_ARREBOL_JOB_ID = "-1";
@@ -250,6 +251,10 @@ public class SapsImage implements Serializable {
     return dataset + "_" + cal.get(Calendar.DAY_OF_YEAR) + "_" + cal.get(Calendar.YEAR);
   }
 
+  private ZonedDateTime getZonedImageDate() {
+    return imageDate.toInstant().atZone(ZoneId.systemDefault());
+  }
+
   public JSONObject toJSON() throws JSONException {
     JSONObject json = new JSONObject();
 
@@ -258,7 +263,7 @@ public class SapsImage implements Serializable {
     json.put("collectionTierName", getCollectionTierName());
     json.put("dataset", dataset);
     json.put("region", region);
-    json.put("imageDate", DATE_FORMATER.format(imageDate));
+    json.put("imageDate", getZonedImageDate().format(DATE_FORMATTER));
     json.put("state", state.getValue());
     json.put("federationMember", federationMember);
     json.put("priority", priority);
@@ -284,7 +289,7 @@ public class SapsImage implements Serializable {
         + "', region='"
         + region
         + "', imageDate="
-        + DATE_FORMATER.format(imageDate)
+        + getZonedImageDate().format(DATE_FORMATTER)
         + ", state='"
         + state
         + ", federationMember='"
