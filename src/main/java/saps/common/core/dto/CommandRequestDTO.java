@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CommandRequestDTO implements Serializable, Cloneable {
+public class CommandRequestDTO implements Serializable {
   private static final Logger LOGGER = Logger.getLogger(CommandRequestDTO.class);
 
   private static final long serialVersionUID = 5281647552435522413L;
@@ -47,10 +47,6 @@ public class CommandRequestDTO implements Serializable, Cloneable {
 
   public State getState() {
     return this.state;
-  }
-
-  public CommandRequestDTO clone() {
-    return this;
   }
 
   public JSONObject toJSON() {
