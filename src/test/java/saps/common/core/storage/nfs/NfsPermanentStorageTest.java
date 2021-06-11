@@ -368,10 +368,14 @@ public class NfsPermanentStorageTest {
   }
 
   private boolean containsFile(File dir, String fileName) {
-    if (dir.isDirectory()) {
-      return Objects.requireNonNull(dir.listFiles((dir1, name) -> name.equals(fileName))).length
-          != 0;
+    try {
+      if (dir.isDirectory()) {
+        return Objects.requireNonNull(dir.listFiles((dir1, name) -> name.equals(fileName))).length
+            != 0;
+      }
+      return false;
+    } catch (NullPointerException np) {
+      return false;
     }
-    return false;
   }
 }
