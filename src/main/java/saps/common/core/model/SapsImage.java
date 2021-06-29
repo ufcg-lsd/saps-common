@@ -3,6 +3,7 @@ package saps.common.core.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -252,7 +253,7 @@ public class SapsImage implements Serializable {
   }
 
   private ZonedDateTime getZonedImageDate() {
-    return imageDate.toInstant().atZone(ZoneId.systemDefault());
+    return Instant.ofEpochMilli(imageDate.getTime()).atZone(ZoneId.systemDefault());
   }
 
   public JSONObject toJSON() throws JSONException {
