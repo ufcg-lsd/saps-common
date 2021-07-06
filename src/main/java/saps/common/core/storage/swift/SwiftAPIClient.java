@@ -26,6 +26,7 @@ public class SwiftAPIClient {
 
   private static final Logger LOGGER = Logger.getLogger(SwiftAPIClient.class);
   private static final String CONTAINER_URL_PATTERN = "%s/%s?path=%s";
+  private static final String TASK_URL_PATTERN = "%s/%s?path=%s/%s";
 
   private final String swiftUrl;
 
@@ -168,18 +169,20 @@ public class SwiftAPIClient {
   }
 
   public boolean existsTask(String containerName, String basePath, String taskId)
-      throws IOException {
-    List<String> files = this.listFiles(containerName, basePath);
-    for (String filePath : files) {
-      try {
-        if (Paths.get(filePath).getFileName().toString().equals(taskId)) {
-          return true;
-        }
-      } catch (NullPointerException np) {
-        LOGGER.error("Error while checking if task exists", np);
-        return false;
-      }
-    }
-    return false;
+      throws IOException {	  
+	  String url = String.format(TASK_URL_PATTERN, swiftUrl, containerName, basePath, taskId);
+	  HttpClient client = HttpClients.createDefault();
+	  HttpGet httpget = new HttpGet(url);
+	  httpget.addHeader("X-Auth-Token", token.getAccessId());
+	  HttpResponse response = client.execute(httpget);
+	  
+	  if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+		  return true;
+	  }
+	  else if(response.getStatusLine().getStatusCode() == HttpStatus.SC_NO_CONTENT) {
+		  return false;
+	  } else {
+		  throw new IOException("Error while checking if task exists: " + response.getStatusLine().getStatusCode());
+	  }
   }
 }
