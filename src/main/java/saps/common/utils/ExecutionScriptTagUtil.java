@@ -24,6 +24,7 @@ public class ExecutionScriptTagUtil {
   private static final String DOCKER_REPOSITORY_KEY_JSON = "docker_repository";
   private static final String MEMORY_USAGE_KEY_JSON = "memory_usage";
   private static final String CPU_USAGE_KEY_JSON = "cpu_usage";
+  private static final String EPHEMERAL_STORAGE_KEY_JSON = "ephemeral_usage";
 
   public static ExecutionScriptTag getExecutionScriptTag(
       String tagsFilePath, String name, String type) throws Exception {
@@ -62,9 +63,10 @@ public class ExecutionScriptTagUtil {
           String dockerRepository = jsonScriptTag.optString(DOCKER_REPOSITORY_KEY_JSON);
           String memoryUsage = jsonScriptTag.optString(MEMORY_USAGE_KEY_JSON);
           String cpuUsage = jsonScriptTag.optString(CPU_USAGE_KEY_JSON);
+          String ephemeralUsage = jsonScriptTag.optString(EPHEMERAL_STORAGE_KEY_JSON);
 
           return new ExecutionScriptTag(
-              name, dockerRepository, dockerTag, memoryUsage, cpuUsage, type);
+              name, dockerRepository, dockerTag, memoryUsage, cpuUsage,ephemeralUsage, type);
         }
       }
       throw new Exception("Execution Script Tag by name (" + name + ") not found.");

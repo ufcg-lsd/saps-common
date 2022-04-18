@@ -17,6 +17,9 @@ public class ExecutionScriptTag {
   public static String CPU_REQUIREMENT = "cpu";
   public static String REGEXP_CPU_REQUIREMENT = "^[0-9]+m$";
 
+  public static String EPHEMERAL_REQUIREMENT = "ephemeral";
+  public static String REGEXP_EPHEMERAL_REQUIREMENT = "^[0-9]+[EPTGMK]$";
+
   private String type;
   private String name;
   private String dockerRepository;
@@ -29,6 +32,7 @@ public class ExecutionScriptTag {
       String dockerTag,
       String memoryUsage,
       String cpuUsage,
+      String ephemeralUsage,
       String type)
       throws SapsException {
     this.name = name;
@@ -38,8 +42,10 @@ public class ExecutionScriptTag {
     this.requirements = new HashMap<String, String>();
     this.requirements.put(MEMORY_REQUIREMENT, memoryUsage);
     this.requirements.put(CPU_REQUIREMENT, cpuUsage);
+    this.requirements.put(EPHEMERAL_REQUIREMENT, ephemeralUsage);
     ExecutionScriptTagUtil.checkRequirement(memoryUsage, REGEXP_MEMORY_REQUIREMENT);
     ExecutionScriptTagUtil.checkRequirement(cpuUsage, REGEXP_CPU_REQUIREMENT);
+    ExecutionScriptTagUtil.checkRequirement(ephemeralUsage, REGEXP_EPHEMERAL_REQUIREMENT);
   }
 
   public String getName() {
@@ -64,6 +70,10 @@ public class ExecutionScriptTag {
 
   public String getCpuUsage() {
     return requirements.get(CPU_REQUIREMENT);
+  }
+
+  public String getEphemeralUsage() {
+    return requirements.get(EPHEMERAL_REQUIREMENT);
   }
 
   public String formatImageDocker() {
