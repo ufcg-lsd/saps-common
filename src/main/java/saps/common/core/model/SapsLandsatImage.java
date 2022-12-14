@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class SapsLandsatImage implements Serializable {
 
-    private String region;
+    private String tile;
 
     public SapsLandsatImage(String tile) {
         this.tile = tile;
