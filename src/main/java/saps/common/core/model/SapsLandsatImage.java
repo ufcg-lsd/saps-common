@@ -5,38 +5,17 @@ import java.sql.Date;
 
 public class SapsLandsatImage implements Serializable {
 
-    private String region;
-    private Date date;
-    private String landsat;
+    private String tile;
 
-    public SapsLandsatImage(String region, Date date, String landsat) {
-        this.region = region;
-        this.date = date;
-        this.landsat = landsat;
+    public SapsLandsatImage(String tile) {
+        this.tile = tile;
     }
 
-    public String getRegion() {
-        return this.region;
+    public String getTile() {
+        return this.tile;
     }
 
-    public Date getDate() {
-        return this.date;
+    public void setTile(String tile) {
+        this.tile = tile;
     }
-
-    public String getLandsat() {
-        return this.landsat;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public void getLandsat(String landsat) {
-        this.landsat = landsat;
-    }
-    
 }
