@@ -1,10 +1,11 @@
 package saps.common.core.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
-import javax.print.attribute.standard.JobState;
+import saps.common.core.model.enums.JobState;
 
 public class SapsUserJob implements Serializable {
 
@@ -20,10 +21,10 @@ public class SapsUserJob implements Serializable {
   private Date endDate;
   private int priority;
   private List<String> tasksIds;
-  private Date updatedTime;
-  private Date creationTime;
+  private Timestamp creationTime;
 
-  public SapsUserJob(String jobId,
+  public SapsUserJob(
+      String jobId,
       String lowerLeftLatitude,
       String lowerLeftLongitude,
       String upperRightLatitude,
@@ -35,8 +36,7 @@ public class SapsUserJob implements Serializable {
       Date endDate,
       int priority,
       List<String> taskIds,
-      Date updatedTime,
-      Date creationTime) {
+      Timestamp creationTime) {
 
     this.jobId = jobId;
     this.lowerLeftLatitude = lowerLeftLatitude;
@@ -50,7 +50,6 @@ public class SapsUserJob implements Serializable {
     this.endDate = endDate;
     this.priority = priority;
     this.tasksIds = taskIds;
-    this.updatedTime = updatedTime;
     this.creationTime = creationTime;
   }
 
@@ -150,19 +149,11 @@ public class SapsUserJob implements Serializable {
     this.tasksIds = tasksIds;
   }
 
-  public Date getUpdatedTime() {
-    return this.updatedTime;
-  }
-
-  public void setUpdatedTIme(Date updatedTime) {
-    this.updatedTime = updatedTime;
-  }
-
-  public Date getCreationTime() {
+  public Timestamp getCreationTime() {
     return this.creationTime;
   }
 
-  public void setCreationTime(Date creationTime) {
+  public void setCreationTime(Timestamp creationTime) {
     this.creationTime = creationTime;
   }
 
