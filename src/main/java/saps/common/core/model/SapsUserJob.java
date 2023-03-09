@@ -5,6 +5,9 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import saps.common.core.model.enums.JobState;
 
 public class SapsUserJob implements Serializable {
@@ -156,5 +159,26 @@ public class SapsUserJob implements Serializable {
   public void setCreationTime(Timestamp creationTime) {
     this.creationTime = creationTime;
   }
+
+  public JSONObject toJSON() throws JSONException {
+    JSONObject json = new JSONObject();
+
+    json.put("jobId", jobId);
+    json.put("lowerLeftLatitude", lowerLeftLatitude);
+    json.put("lowerLeftLongitude", lowerLeftLongitude);
+    json.put("upperRightLatitude", upperRightLatitude);
+    json.put("upperRightLongitude", upperRightLongitude);
+    json.put("state", state);
+    json.put("userEmail", userEmail);
+    json.put("jobLabel", jobLabel);
+    json.put("startDate", startDate);
+    json.put("endDate", endDate);
+    json.put("priority", priority);
+    json.put("tasksIds", tasksIds);
+    json.put("creationTime", creationTime);
+    
+    return json;
+  }
+
 
 }

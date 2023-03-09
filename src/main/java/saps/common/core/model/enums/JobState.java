@@ -1,6 +1,9 @@
 /* (C)2020 */
 package saps.common.core.model.enums;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum JobState {
   SUBMITTED("Submitted"),
   FAILED("Failed"),
@@ -26,5 +29,26 @@ public enum JobState {
       }
     }
     throw new Exception("Invalid job state");
+  }
+
+  public static JobState getStateFromStr(String stateStr) {
+    JobState[] elements = values();
+    for (JobState currentState : elements) {
+      if (currentState.value().equals(stateStr) || currentState.name().equals(stateStr)) {
+        return currentState;
+      }
+    }
+    return null;
+  }
+
+  public static List<String> getAllValues() {
+
+    List<String> values = new ArrayList<String>();
+
+    for (JobState currentState : values()) {
+      values.add(currentState.name());
+    }
+
+    return values;
   }
 }
