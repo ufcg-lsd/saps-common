@@ -239,30 +239,15 @@ public class SapsImage implements Serializable {
     this.error = error;
   }
 
-  // TODO change to the correct format
   public String getName() {
-    Calendar cal = Calendar.getInstance();
-    cal.setTime(imageDate);
-    return dataset + cal.get(Calendar.DAY_OF_YEAR) + cal.get(Calendar.YEAR);
+    SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+    return dataset + format.format(imageDate);
   }
 
-  // public String getName() {
-  //   SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-  //   return dataset + format.format(imageDate);
-  // }
-
-  // TODO change to the correct format
   public String getCollectionTierName() {
-    Calendar cal = Calendar.getInstance();
-    cal.setTime(imageDate);
-    return dataset + "_" + cal.get(Calendar.DAY_OF_YEAR) + "_" + cal.get(Calendar.YEAR);
+    SimpleDateFormat format = new SimpleDateFormat("yyyyDDD");
+    return dataset + "_" + format.format(imageDate);
   }
-
-  // public String getCollectionTierName() {
-  //   SimpleDateFormat format = new SimpleDateFormat("yyyyDDD");
-  //   return dataset + "_" + format.format(imageDate);
-  // }
-
 
   private ZonedDateTime getZonedImageDate() {
     return Instant.ofEpochMilli(imageDate.getTime()).atZone(ZoneId.systemDefault());
