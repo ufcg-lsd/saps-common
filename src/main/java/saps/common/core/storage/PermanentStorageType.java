@@ -2,8 +2,7 @@
 package saps.common.core.storage;
 
 public enum PermanentStorageType {
-  NFS("nfs"),
-  SWIFT("swift");
+  NFS("nfs");
 
   private final String type;
 

@@ -44,7 +44,7 @@ public class NfsPermanentStorage implements PermanentStorage {
     this.nfsTempStoragePath =
         properties.getProperty(SapsPropertiesConstants.SAPS_TEMP_STORAGE_PATH);
     this.nfsPermanentStoragePath =
-        properties.getProperty(SapsPropertiesConstants.NFS_PERMANENT_STORAGE_PATH);
+        properties.getProperty(SapsPropertiesConstants.FS_PERMANENT_STORAGE_PATH);
     this.tasksDirName = properties.getProperty(SapsPropertiesConstants.PERMANENT_STORAGE_TASKS_DIR);
     this.baseUrl = properties.getProperty(SapsPropertiesConstants.PERMANENT_STORAGE_BASE_URL);
 
@@ -68,7 +68,7 @@ public class NfsPermanentStorage implements PermanentStorage {
   private boolean checkProperties(Properties properties) {
     String[] propertiesSet = {
       SapsPropertiesConstants.PERMANENT_STORAGE_TASKS_DIR,
-      SapsPropertiesConstants.NFS_PERMANENT_STORAGE_PATH,
+      SapsPropertiesConstants.FS_PERMANENT_STORAGE_PATH,
       SapsPropertiesConstants.PERMANENT_STORAGE_BASE_URL
     };
 

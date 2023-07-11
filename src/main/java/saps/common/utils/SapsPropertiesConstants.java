@@ -63,5 +63,5 @@ public class SapsPropertiesConstants {
    */
   public static final String ARREBOL_BASE_URL = "arrebol_base_url";
 
-  public static final String NFS_PERMANENT_STORAGE_PATH = "nfs_permanent_storage_path";
+  public static final String FS_PERMANENT_STORAGE_PATH = "nfs_permanent_storage_path";
 }
