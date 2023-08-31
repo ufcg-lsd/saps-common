@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/** Created by manel on 22/08/16. */
 public class ProcessUtil {
 
   public static String getOutput(Process p) throws IOException {
