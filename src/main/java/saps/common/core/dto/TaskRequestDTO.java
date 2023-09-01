@@ -25,7 +25,6 @@ public class TaskRequestDTO implements Serializable {
     this.metadata = metadata;
   }
 
-  // empty constructor required for Gson.
   public TaskRequestDTO() {}
 
   public List<String> getCommands() {

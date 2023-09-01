@@ -9,7 +9,7 @@ import saps.common.core.model.SapsJob;
 import saps.common.core.model.SapsTask;
 
 public class JobRequestDTO implements Serializable {
-  /** */
+
   private static final long serialVersionUID = 1L;
 
   private String label;
