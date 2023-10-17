@@ -48,8 +48,6 @@ public class SapsTask implements Serializable {
   }
 
   public static List<String> buildCommandList(SapsImage task, String phase) {
-    // info shared dir between host (with NFS) and container
-    // ...
 
     DateFormat dateFormater = new SimpleDateFormat(DATE_FORMAT);
     String taskDir = task.getTaskId();
@@ -57,15 +55,12 @@ public class SapsTask implements Serializable {
     String phaseDirPath = "/nfs/" + taskDir + File.separator + phase;
     List<String> commands = new LinkedList<String>();
 
-    // Remove dirs
     String removeThings = String.format("rm -rf %s", phaseDirPath);
     commands.add(removeThings);
 
-    // Create dirs
     String createDirectory = String.format("mkdir -p %s", phaseDirPath);
     commands.add(createDirectory);
 
-    // Run command
     String runCommand =
         String.format(
             "bash /home/saps/run.sh %s %s %s %s",

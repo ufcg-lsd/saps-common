@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e726ed11-8d77-4cd5-b571-4b8b74a60ad2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/saps/common/core/model/SapsImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/saps/common/core/model/SapsImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/saps/common/core/model/SapsLandsatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/saps/common/core/model/SapsLandsatImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/saps/common/core/model/SapsTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/saps/common/core/model/SapsTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/saps/common/core/storage/PermanentStorageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/saps/common/core/storage/PermanentStorageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/saps/common/core/storage/nfs/NfsPermanentStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/saps/common/core/storage/nfs/NfsPermanentStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/saps/common/core/storage/swift/IdentityToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/saps/common/core/storage/swift/KeystoneV3IdentityRequestHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/saps/common/core/storage/swift/SwiftAPIClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/saps/common/core/storage/swift/SwiftPermanentStorage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/saps/common/core/util/CheckSumMD5ForFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/saps/common/core/util/CheckSumMD5ForFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/saps/common/utils/SapsPropertiesConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/saps/common/utils/SapsPropertiesConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/saps/common/core/storage/nfs/NfsPermanentStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/saps/common/core/storage/nfs/NfsPermanentStorageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/saps/common/core/storage/swift/KeystoneV3IdentityPluginTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/saps/common/core/storage/swift/SwiftAPIClientTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/saps/common/core/storage/swift/SwiftPermanentStorageTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2SNfph4H7iUWmR56BYCnCzOPpj6" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="flattenPackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showScratchesAndConsoles" value="false" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "/Users/jhenriqueax/Desktop/LSD/newCommon/v01/saps-common"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e726ed11-8d77-4cd5-b571-4b8b74a60ad2" name="Changes" comment="" />
+      <created>1688992147339</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1688992147339</updated>
+      <workItem from="1688992152992" duration="2973000" />
+    </task>
+    <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/saps_common$NfsPermanentStorageTest.ic" NAME="NfsPermanentStorageTest Coverage Results" MODIFIED="1688992323699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>saps.common.core.storage.nfs.*</FILTER>
+    </SUITE>
+  </component>
+</project>

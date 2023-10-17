@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class TaskResponseDTO implements Serializable {
-  /** */
+ 
   private static final long serialVersionUID = 1L;
 
   public static final String STATE_FAILED = "FAILED";

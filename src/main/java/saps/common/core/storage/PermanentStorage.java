@@ -12,7 +12,6 @@ import saps.common.core.storage.exceptions.TaskNotFoundException;
  * tasks and for allowing them to be accessed through links. The saved files are obtained from
  * temporary storage.
  */
-// FIXME Remove the boolean return from methods
 public interface PermanentStorage {
 
   /**

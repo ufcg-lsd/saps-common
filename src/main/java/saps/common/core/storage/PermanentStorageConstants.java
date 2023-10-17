@@ -5,7 +5,6 @@ import java.io.File;
 
 public class PermanentStorageConstants {
 
-  // FIXME Change public to protected
   public static final String INPUTDOWNLOADING_DIR = "inputdownloading";
   public static final String PREPROCESSING_DIR = "preprocessing";
   public static final String PROCESSING_DIR = "processing";
